@@ -27,3 +27,37 @@ func Any(strings []string, filter func(string) bool) bool {
 	}
 	return false
 }
+
+//
+// First(strings []string, filter func(string) bool) => string
+//
+// Returns the first string matching the filter
+//
+func First(strings []string, filter func(string) bool) (string, bool) {
+	for _, str := range strings {
+		if filter(str) {
+			return str, true
+		}
+	}
+	return "", false
+}
+
+//
+// Last(strings []string, filter func(string) bool) => string
+//
+// Returns the last string matching the filter
+//
+func Last(strings []string, filter func(string) bool) (string, bool) {
+	var last string
+	var match bool
+	for _, str := range strings {
+		if filter(str) {
+			last = str
+			match = true
+		}
+	}
+	if match {
+		return last, true
+	}
+	return "", false
+}

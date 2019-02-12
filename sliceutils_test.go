@@ -63,3 +63,33 @@ func TestAny(t *testing.T) {
 		}
 	})
 }
+
+func TestFirst(t *testing.T) {
+	t.Run("'First' with 'length_is_3'", func(t *testing.T) {
+		result, ok := su.First(numbers, length_is_3)
+		if !ok || (ok && result != "One") {
+			t.Errorf("'First' with 'length_is_3' should return 'One' !")
+		}
+	})
+	t.Run("'First' with 'length_greater_10'", func(t *testing.T) {
+		_, ok := su.First(numbers, length_greater_10)
+		if ok {
+			t.Errorf("'First' with 'length_greater_10' should return nothing (not ok) !")
+		}
+	})
+}
+
+func TestLast(t *testing.T) {
+	t.Run("'Last' with 'length_is_3'", func(t *testing.T) {
+		result, ok := su.Last(numbers, length_is_3)
+		if !ok || (ok && result != "Two") {
+			t.Errorf("'Last' with 'length_is_3' should return 'Two' !")
+		}
+	})
+	t.Run("'Last' with 'length_greater_10'", func(t *testing.T) {
+		_, ok := su.Last(numbers, length_greater_10)
+		if ok {
+			t.Errorf("'Last' with 'length_greater_10' should return nothing (not ok) !")
+		}
+	})
+}
